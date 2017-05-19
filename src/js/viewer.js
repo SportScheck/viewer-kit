@@ -800,7 +800,6 @@
                     $(this).trigger('doubletapend');
                 } else {
                     e.preventDefault();
-                    e.stopPropagation();
                 }
             }
             lastTapTime = currentTime;
