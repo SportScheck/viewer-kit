@@ -780,6 +780,7 @@
             lastTapTime2 = currentTime;
         });
         $element.on('touchend', function (e) {
+            e.preventDefault();
             var currentTime = new Date();
             var tapTime = currentTime - lastTapTime;
             touchEnd = {
@@ -799,7 +800,6 @@
                     $(this).trigger('doubletap');
                     $(this).trigger('doubletapend');
                 } else {
-                    e.preventDefault();
                     if ($(e.target).hasClass('amp-slide')) {
                         e.stopPropagation();
                     }
