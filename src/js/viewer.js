@@ -950,6 +950,7 @@
             $('.amp-spin').find('.amp-frame').css({
                 'margin-left': '-1px'
             });
+            self.prevAssetIndex = self.currentAssetIndex;
             self.currentAssetIndex = data.index - 1;
             self.zoomOutFull();
             self.initTooltips();
@@ -1206,6 +1207,11 @@
             if (slide.length > 0) {
               slide.ampZoomInline('zoomOutFull');
             }
+
+            var prevSlide = self.getZoomSlide(self.prevAssetIndex);
+            if (prevSlide.length > 0) {
+                prevSlide.ampZoomInline('zoomOutFull');
+            }
             setTimeout(function () {
               self.isZoomCycle = false;
             }, 600)
@@ -1251,9 +1257,10 @@
         }
     };
 
-    Viewer.prototype.getZoomSlide = function () {
+    Viewer.prototype.getZoomSlide = function (index) {
         var self = this;
-        return self.mainContainerList.find('> > li:eq(' + self.currentAssetIndex + ') .amp-zoom');
+        var index = index || self.currentAssetIndex;
+        return self.mainContainerList.find('> > li:eq(' + index + ') .amp-zoom');
     };
 
     Viewer.prototype.checkZoomIcons = function () {
