@@ -1403,6 +1403,7 @@
         var spinTraps = self.mainContainerList.find('.spin-trap');
         if (self.canTouch) {
             spinTraps.removeClass('active-for-scrolling');
+            spinTraps.parent().off('touchstart', self._prevent);
         } else {
             spinTraps.css({display: 'none'});
         }
