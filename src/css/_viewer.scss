@@ -81,6 +81,14 @@ body {
     }
   }
 
+  &.tooltip-hidden {
+    .tooltip {
+      &.image {
+        display: none !important;
+      }
+    }
+  }
+
   .desktop-normal-view,
   .desktop-full-view,
   .mobile-normal-view {

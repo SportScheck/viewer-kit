@@ -632,7 +632,9 @@
                     self.tooltipText.text(tapText);
                     self.fadeOutTooltip();
                 } else {
-                    self.tooltip.fadeOut(0);
+                    self.tooltip.fadeOut(0, function() {
+                      self.tooltip.closest('.amp-viewer-kit').addClass('tooltip-hidden');
+                    });
 
                     var margin = +self.mainContainerList.css('margin-left').replace('px', '');
 
@@ -647,7 +649,9 @@
                     });
 
                     self.mainContainerList.on('mouseout', function () {
-                        self.tooltip.fadeOut(0);
+                        self.tooltip.fadeOut(0, function() {
+                          self.tooltip.closest('.amp-viewer-kit').addClass('tooltip-hidden');
+                        });
                     });
                 }
                 break;
@@ -655,7 +659,9 @@
                 tapText = (self.settings.zoomInlineDoubleTap) ? self.settings.tooltips.desktopFull.image.doubleTouch.text :
                     self.settings.tooltips.desktopFull.image.touch.text;
                 self.tooltipText.text(self.canTouch ? tapText : self.settings.tooltips.desktopFull.image.noTouch.text);
-                self.tooltip.fadeOut(0);
+                self.tooltip.fadeOut(0, function() {
+                  self.tooltip.closest('.amp-viewer-kit').addClass('tooltip-hidden');
+                });
                 break;
             case self.views.mobileNormalView:
                 tapText = (self.settings.zoomInlineDoubleTap) ? self.settings.tooltips.mobile.image.doubleTouch.text :
@@ -717,7 +723,9 @@
         clearTimeout(self.tooltipTimeout);
         self.tooltip.stop();
         self.tooltipTimeout = setTimeout(function () {
-            self.tooltip.fadeOut();
+            self.tooltip.fadeOut(function() {
+              self.tooltip.closest('.amp-viewer-kit').addClass('tooltip-hidden');
+            });
         }, self.settings.tooltips.displayTime);
     };
 
