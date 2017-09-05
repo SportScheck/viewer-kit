@@ -84,7 +84,9 @@ body {
   &.tooltip-hidden {
     .tooltip {
       &.image {
-        display: none !important;
+        @media (max-width: 768px) {
+          display: none !important;
+        }
       }
     }
   }
