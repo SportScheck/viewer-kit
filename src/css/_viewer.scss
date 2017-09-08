@@ -81,6 +81,16 @@ body {
     }
   }
 
+  &.tooltip-hidden {
+    .tooltip {
+      &.image {
+        @media (max-width: 768px) {
+          display: none !important;
+        }
+      }
+    }
+  }
+
   .desktop-normal-view,
   .desktop-full-view,
   .mobile-normal-view {
