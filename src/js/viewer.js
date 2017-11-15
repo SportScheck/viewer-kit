@@ -898,8 +898,9 @@
         $(window).off('resize', this._resize);
         $(window).on('resize', this._resize.bind(this));
 
-        $(document).off('gesturestart', self._prevent);
-        $(document).on('gesturestart', self._prevent.bind(this));
+        // RISE-1848
+        self.wrapper.off('gesturestart', self._prevent)
+                    .on('gesturestart', self._prevent.bind(this));
 
 
         window.removeEventListener("orientationchange", self._orientationChange);
